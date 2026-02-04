@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>איתי תורג'מן | Full-Stack Developer & DevOps</title>
+    <title>איתי תורג'מן | Full-Stack & DevOps</title>
+
     <style>
         :root {
             --primary: #0f172a;
@@ -11,166 +12,311 @@
             --text-main: #334155;
             --bg-light: #f8fafc;
         }
+
         body {
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-            background-color: var(--bg-light);
+            font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+            background: radial-gradient(circle at top, #e0f2fe 0%, #f8fafc 40%);
             color: var(--text-main);
             margin: 0;
-            line-height: 1.6;
+            line-height: 1.7;
         }
+
+        /* HERO */
         .hero {
-            background: linear-gradient(135deg, var(--primary) 0%, #1e293b 100%);
+            position: relative;
+            background: linear-gradient(135deg, #0f172a, #020617);
             color: white;
-            padding: 80px 20px;
+            padding: 90px 20px 110px;
             text-align: center;
+            overflow: hidden;
         }
-        .hero h1 { margin: 0; font-size: 3em; letter-spacing: -1px; }
-        .hero p { font-size: 1.2em; opacity: 0.9; margin-top: 10px; }
-        
-        .container { max-width: 1000px; margin: -50px auto 50px; padding: 0 20px; }
-        
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at center, rgba(59,130,246,0.25), transparent 60%);
+        }
+
+        .profile-container {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 25px;
+            z-index: 2;
+        }
+
+        .profile-container::before {
+            content: "";
+            position: absolute;
+            inset: -8px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #3b82f6, #06b6d4);
+            filter: blur(14px);
+            opacity: 0.75;
+        }
+
+        .profile-img {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #020617;
+            background: white;
+            z-index: 2;
+        }
+
+        .college-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #f59e0b, #f97316);
+            color: white;
+            padding: 6px 18px;
+            border-radius: 999px;
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+            font-weight: bold;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin: 10px 0 6px;
+            letter-spacing: -1px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            opacity: 0.85;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* CONTENT */
+        .container {
+            max-width: 1100px;
+            margin: -80px auto 70px;
+            padding: 0 20px;
+            position: relative;
+            z-index: 3;
+        }
+
         .card {
             background: white;
-            border-radius: 16px;
-            padding: 30px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-            margin-bottom: 30px;
+            border-radius: 20px;
+            padding: 35px;
+            box-shadow:
+                0 20px 40px rgba(15,23,42,0.08),
+                inset 0 1px 0 rgba(255,255,255,0.6);
+            margin-bottom: 40px;
         }
-        
-        .about-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
-        
+
+        h2 {
+            margin-top: 0;
+            color: var(--primary);
+        }
+
+        /* SKILLS */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 22px;
+            margin-top: 20px;
+        }
+
+        .skill-category {
+            background: #f1f5f9;
+            padding: 18px;
+            border-radius: 14px;
+            border-right: 5px solid var(--accent);
+        }
+
+        .skill-category h4 {
+            margin: 0 0 12px;
+            color: var(--primary);
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-item {
+            background: white;
+            padding: 5px 12px;
+            border-radius: 8px;
+            font-size: 0.85em;
+            font-weight: 600;
+            border: 1px solid #e2e8f0;
+        }
+
+        /* PROJECTS */
         .project-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin-top: 20px;
+            gap: 28px;
         }
-        
+
         .project-card {
+            background: white;
             border: 1px solid #e2e8f0;
-            border-radius: 12px;
+            border-radius: 16px;
             overflow: hidden;
-            transition: all 0.3s ease;
             display: flex;
             flex-direction: column;
+            transition: all 0.35s ease;
         }
+
         .project-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            transform: translateY(-10px) scale(1.01);
+            box-shadow: 0 25px 50px rgba(59,130,246,0.15);
             border-color: var(--accent);
         }
+
         .project-header {
-            padding: 20px;
+            padding: 16px;
             background: #f1f5f9;
-            border-bottom: 1px solid #e2e8f0;
             font-weight: bold;
-            color: var(--primary);
-            font-size: 1.2em;
+            text-align: center;
         }
-        .project-body { padding: 20px; flex-grow: 1; }
-        
-        .tag-list { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 15px; }
-        .tag {
-            font-size: 0.75rem;
-            padding: 4px 10px;
-            border-radius: 100px;
-            background: #eff6ff;
-            color: #2563eb;
-            font-weight: 600;
+
+        .project-body {
+            padding: 22px;
+            flex-grow: 1;
         }
-        
+
         .btn {
             display: block;
             text-align: center;
-            background: var(--accent);
+            background: linear-gradient(135deg, #3b82f6, #06b6d4);
             color: white;
-            padding: 12px;
+            padding: 11px;
             text-decoration: none;
-            border-radius: 8px;
+            border-radius: 10px;
             font-weight: bold;
-            transition: background 0.2s;
+            margin-top: 18px;
+            transition: transform 0.2s, box-shadow 0.2s;
         }
-        .btn:hover { background: #2563eb; }
-        
-        .infra-section {
-            background: #1e293b;
-            color: #cbd5e1;
-            border-radius: 16px;
-            padding: 30px;
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 22px rgba(59,130,246,0.45);
         }
-        .infra-section h2 { color: white; margin-top: 0; }
-        
-        footer { text-align: center; padding: 40px; color: #94a3b8; border-top: 1px solid #e2e8f0; }
-        
-        .college-badge {
-            display: inline-block;
-            background: #f59e0b;
-            color: white;
-            padding: 4px 12px;
-            border-radius: 20px;
+
+        footer {
+            text-align: center;
+            padding: 28px;
+            background: #020617;
+            color: #94a3b8;
             font-size: 0.9rem;
-            margin-bottom: 15px;
         }
     </style>
 </head>
+
 <body>
 
 <section class="hero">
+    <div class="profile-container">
+        <img src="./itai.jpg"
+             alt="איתי תורג'מן"
+             class="profile-img"
+             onerror="this.src='https://ui-avatars.com/api/?name=Itai+Turgeman&background=3b82f6&color=fff&size=150'">
+    </div>
+
     <div class="college-badge">מכללת כנרת</div>
     <h1>איתי תורג'מן</h1>
-    <p>סטודנט שנה אחרונה להנדסת תוכנה | מפתח Full-Stack & DevOps</p>
+    <p>שנה אחרונה להנדסת תוכנה | Full-Stack & DevOps Engineer</p>
 </section>
 
 <div class="container">
+
     <div class="card">
-        <h2>קצת עלי</h2>
-        <p>אני נמצא כיום בשנה האחרונה ללימודי הנדסאי תוכנה במכללת כנרת. אני חי ונושם פיתוח, עם תשוקה מיוחדת לפרויקטי <b>Full-Stack</b> המשלבים צד לקוח עשיר וצד שרת חזק. הפורטפוליו הזה עצמו הוא חלק מתשתית DevOps מורכבת שהקמתי, הכוללת Docker, CI/CD וענן.</p>
+        <h2>קצת עליי</h2>
+        <p>
+            סטודנט בשנה האחרונה להנדסת תוכנה במכללת כנרת, עם התמחות בפיתוח מערכות מקצה לקצה
+            (Full-Stack) ודגש על DevOps, אוטומציה ותשתיות ענן.
+        </p>
+
+        <h3 style="margin-top: 30px;">כישורים טכנולוגיים</h3>
+
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h4>Frontend</h4>
+                <div class="skill-list">
+                    <span class="skill-item">React</span>
+                    <span class="skill-item">JavaScript</span>
+                    <span class="skill-item">HTML5</span>
+                    <span class="skill-item">CSS3</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h4>Backend</h4>
+                <div class="skill-list">
+                    <span class="skill-item">Node.js</span>
+                    <span class="skill-item">Express</span>
+                    <span class="skill-item">REST API</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h4>DevOps & Cloud</h4>
+                <div class="skill-list">
+                    <span class="skill-item">Docker</span>
+                    <span class="skill-item">GitHub Actions</span>
+                    <span class="skill-item">Oracle Cloud</span>
+                    <span class="skill-item">Nginx</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h4>Databases</h4>
+                <div class="skill-list">
+                    <span class="skill-item">MySQL</span>
+                    <span class="skill-item">SQL</span>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <h2>הפרויקטים הנבחרים שלי</h2>
+    <h2>פרויקטים נבחרים</h2>
+
     <div class="project-grid">
         <div class="project-card">
-            <div class="project-header">חנות תחפושות - React</div>
+            <div class="project-header">חנות תחפושות | React</div>
             <div class="project-body">
-                <div class="tag-list">
-                    <span class="tag">React</span>
-                    <span class="tag">Client-Side</span>
-                    <span class="tag">Nginx</span>
-                </div>
-                <p>ממשק חנות מודרני המציג קטלוג תחפושות, ניהול עגלת קניות וחוויית משתמש חלקה. הפרויקט מוגש דרך שרת Nginx בקונטיינר Docker.</p>
-                <a href="http://130.110.238.128:3002" class="btn" target="_blank">כניסה לחנות 🎭</a>
+                <p>
+                    חנות דינמית ומעוצבת עם ניהול מוצרים, עגלת קניות,
+                    Docker ו־Nginx.
+                </p>
+                <a href="http://130.110.238.128:3002" target="_blank" class="btn">
+                    בקר בחנות 🎭
+                </a>
             </div>
         </div>
 
         <div class="project-card">
-            <div class="project-header">מעקב לחץ דם - Node.js</div>
+            <div class="project-header">מעקב לחץ דם | Node.js + SQL</div>
             <div class="project-body">
-                <div class="tag-list">
-                    <span class="tag">Node.js</span>
-                    <span class="tag">MySQL</span>
-                    <span class="tag">REST API</span>
-                </div>
-                <p>מערכת לניהול ומעקב אחרי מדידות לחץ דם. הנתונים נשמרים במסד נתונים MySQL ומנוהלים דרך שרת Node.js עם התממשקות ל-Volume לשמירת מידע קבוע.</p>
-                <a href="http://130.110.238.128:3003" class="btn" target="_blank">למערכת המדידות 🩺</a>
+                <p>
+                    מערכת לניהול היסטוריה רפואית עם MySQL,
+                    עבודה עם Volumes ושמירת נתונים.
+                </p>
+                <a href="http://130.110.238.128:3003" target="_blank" class="btn">
+                    למערכת המדידות 🩺
+                </a>
             </div>
         </div>
     </div>
 
-    <div class="infra-section" style="margin-top: 40px;">
-        <h2>תשתית ה-DevOps של הפרויקט</h2>
-        
-        <p>הפרויקט מבוסס על הארכיטקטורה הבאה:</p>
-        <ul style="columns: 2;">
-            <li><b>בנייה אוטומטית:</b> GitHub Actions</li>
-            <li><b>וירטואליזציה:</b> Docker & Docker Compose</li>
-            <li><b>שרת ענן:</b> Oracle Cloud (Ubuntu)</li>
-            <li><b>ניהול גרסאות:</b> Git & Docker Hub</li>
-        </ul>
-    </div>
 </div>
 
 <footer>
-    &copy; 2026 איתי תורג'מן - פרויקט גמר הנדסת תוכנה
+    © 2026 איתי תורג'מן | Portfolio • Full-Stack & DevOps
 </footer>
 
 </body>
